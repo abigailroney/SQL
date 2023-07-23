@@ -1,0 +1,31 @@
+CREATE TABLE bakery (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, baked_today INTEGER, sold INTEGER);
+INSERT INTO bakery VALUES (1, "chocolate chip cookie", 1.25, 30, 28);
+INSERT INTO bakery VALUES (2, "peanut butter cookie", 1.25, 20, 15);
+INSERT INTO bakery VALUES (3, "snickerdoodle cookie", 1.25, 25, 14);
+INSERT INTO bakery VALUES (4, "fruit tart", 4.25, 8, 8);
+INSERT INTO bakery VALUES (5, "chocolate ganache tart", 4.25, 15, 14);
+INSERT INTO bakery VALUES (6, "chocolate croissant", 2.25, 15, 15);
+INSERT INTO bakery VALUES (7, "ham and cheese croissant", 4.25, 10, 10);
+INSERT INTO bakery VALUES (8, "almond croissant", 2.25, 8, 3);
+INSERT INTO bakery VALUES (9, "chocolate cupcakes", 2.50, 30, 25);
+INSERT INTO bakery VALUES (10, "vanilla cupcake", 2.50, 40, 20);
+INSERT INTO bakery VALUES (11, "triple chocolate cake", 16.95, 3, 2);
+INSERT INTO bakery VALUES (12, "bread pudding slice", 2.75, 15, 12);
+INSERT INTO bakery VALUES (13, "flourless chocolate cake slice", 2.75, 10, 8);
+INSERT INTO bakery VALUES (14, "almond tart", 4.25, 10, 5);
+INSERT INTO bakery VALUES (15, "coconut macaroons", 2.25, 20, 18);
+
+--Display the database ordered by price.
+SELECT * FROM bakery ORDER BY price ASC;
+
+--Which items does the baker need to make more of?
+SELECT *, (baked_today-sold) FROM bakery WHERE (baked_today-sold)<5;
+
+--Which items does the baker need to make less of?
+SELECT *, (baked_today-sold) FROM bakery
+WHERE (baked_today-sold)>5;
+
+
+
+
+
