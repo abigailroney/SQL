@@ -1,0 +1,33 @@
+--Create table with some small set of “famous people”, then make more tables about things they do and join those to create readable lists.
+
+CREATE TABLE famous_people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);
+INSERT INTO famous_people (name) VALUES ("Taylor Swift");
+INSERT INTO famous_people (name) VALUES ("Lana Del Rey");
+INSERT INTO famous_people (name) VALUES ("Olivia Rodrigo");
+INSERT INTO famous_people (name) VALUES ("Adele");
+INSERT INTO famous_people (name) VALUES ("Harry Styles");
+CREATE TABLE birthplace (id INTEGER PRIMARY KEY AUTOINCREMENT, person_id TEXT, birthplace TEXT);
+INSERT INTO birthplace (person_id, birthplace) VALUES ("1","Reading, PA");
+INSERT INTO birthplace (person_id, birthplace) VALUES ("2", "New York, NY");
+INSERT INTO birthplace (person_id, birthplace) VALUES ("3", "Murrieta, CA");
+INSERT INTO birthplace (person_id, birthplace) VALUES ("4", "London, UK");
+INSERT INTO birthplace (person_id, birthplace) VALUES ("5", "Redditch, England");
+CREATE TABLE popular_on_spotify (id INTEGER PRIMARY KEY AUTOINCREMENT, person_id INTEGER, song_name TEXT, streams INTEGER);
+INSERT INTO popular_on_spotify (person_id, song_name, streams) VALUES ("1", "I Don't Wanna Live Forever", "1419416682");
+INSERT INTO popular_on_spotify (person_id, song_name, streams) VALUES ("2", "Summertime Sadness", "963286389");
+INSERT INTO popular_on_spotify (person_id, song_name, streams) VALUES ("3", "good 4 u", "1872586766");
+INSERT INTO popular_on_spotify (person_id, song_name, streams) VALUES ("4", "Someone Like You", "1610880531");
+INSERT INTO popular_on_spotify (person_id, song_name, streams) VALUES ("5", "As It Was", "2468943376");
+
+--Join tables to display each artist's name, song name, and how many Spotify streams it has. Order by which has the most Spotify streams.
+SELECT name, song_name, streams
+FROM famous_people
+JOIN popular_on_spotify
+ON famous_people.id=popular_on_spotify.person_id
+ORDER BY streams DESC;
+
+--Join tables to display each artist's name and their birthplace.
+SELECT name, birthplace
+FROM famous_people
+JOIN birthplace
+ON famous_people.id=birthplace.id;
