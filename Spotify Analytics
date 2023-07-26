@@ -69,3 +69,14 @@ Which songs are the top 10 songs based on popularity?
 SELECT track_name FROM BIT_DB.spotifydata
 ORDER BY popularity DESC
 LIMIT 10;
+
+For every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.
+WITH temptable_CTE as (
+SELECT s.artist_name, AVG(s.popularity) as popularity FROM spotifydata s
+GROUP BY s.artist_name
+)
+SELECT popularity, artist_name, 
+'Top Star' AS tag 
+FROM temptable_CTE
+WHERE popularity>=90
+ORDER BY popularity DESC;
