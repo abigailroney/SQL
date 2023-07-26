@@ -53,10 +53,16 @@ SELECT tempo FROM BIT_DB.Spotifydata
 ORDER BY popularity DESC 
 LIMIT 10;
 
-Which artist was on the top 50 chart the most times? How many times did they appear on the chart?
+Which artists had more than one song on the top 50 chart? How many songs did each of these artists have on the chart? Put in order starting with artists who had the most songs on the chart.
+SELECT artist_name, COUNT(artist_name) as count FROM BIT_DB.spotifydata
+GROUP BY artist_name
+HAVING COUNT(artist_name)>1
+ORDER BY (COUNT(artist_name)) DESC;
 
 Which song was the most popular for each artist?
 
+
 Which songs are the top 10 songs based on popularity?
-
-
+SELECT track_name FROM BIT_DB.spotifydata
+ORDER BY popularity DESC
+LIMIT 10;
