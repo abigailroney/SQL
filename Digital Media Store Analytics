@@ -44,12 +44,18 @@ SELECT COUNT(invoiceid) AS 'Count' FROM chinook.invoices WHERE invoicedate LIKE 
 #What are the total sales for 2009?
 SELECT SUM(total) AS 'Total' FROM chinook.invoices WHERE invoicedate LIKE '2009%';
 
-Write a query that includes the purchased track name with each invoice line ID.
+#Write a query that includes the purchased track name with each invoice line ID.
+SELECT t.name, i.invoicelineid
+FROM chinook.invoice_items i
+JOIN chinook.tracks t 
+ON i.trackid = t.trackid
 
-Write a query that includes the purchased track name AND artist name with each invoice line ID.
+#Write a query that includes the purchased track name AND artist name with each invoice line ID.
 
-Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 
-Show the total sales made by each sales agent.
+#Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 
-Which sales agent made the most dollars in sales in 2009?
+#Show the total sales made by each sales agent.
+
+#Which sales agent made the most dollars in sales in 2009?
+
